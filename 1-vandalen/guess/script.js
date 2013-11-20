@@ -2,7 +2,7 @@
 
 window.onload = function(){
 	
-    var secret = Math.floor( Math.random() * 100)+1 // Detta tal behöver bytas ut mot ett slumpat tal.
+    var secret = Math.floor( Math.random() * 100) // Detta tal behöver bytas ut mot ett slumpat tal.
     
     var count=0;
 	
@@ -19,7 +19,7 @@ window.onload = function(){
 		    return [false, "Skriv in ett nummer som är mellan 1-100"];
 		}
 		// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
-		else if(number === secret)
+		else if(number == secret)
 		{
 		    console.log("Gissningar: " + count);
 		    return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + count + " gissningar för att hitta det."];
