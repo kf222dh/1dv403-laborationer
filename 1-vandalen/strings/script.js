@@ -8,9 +8,9 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren.
 	var x = '';
-	if (str = "")
+	if (str === "")
 	{
-        return [true, "Skriv något"]
+        return ["Skriv något"]
     }
         else {
             for (var i = 0; i < str.length; i++)
