@@ -22,7 +22,6 @@ window.onload = function(){
             dateEnd.setFullYear(thisYear);
         }
         return Math.ceil((dateEnd - now) / (1000*60*60*24));
-        sadfasdfasdf
 	};
 	// ------------------------------------------------------------------------------
 
