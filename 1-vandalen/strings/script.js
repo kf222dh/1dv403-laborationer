@@ -6,14 +6,20 @@ window.onload = function(){
 	var convertString = function(str){
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
-		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
-	
-
-
-
-
-
-
+		// Vid fel, kasta ett undantag med ett meddelande till användaren.
+	var x = '';
+	if (str = "")
+	{
+        return [true, "Skriv något"]
+    }
+        else {
+            for (var i = 0; i < str.length; i++)
+            {
+                var y = str.charAt(i);
+                x += (y == 'a' || y == 'A' ? '#' : y == y.toLocaleUpperCase()?y.toLocaleLowerCase():y.toLocaleUpperCase());
+            }
+            return x;
+        }
 	};
 	// ------------------------------------------------------------------------------
 
