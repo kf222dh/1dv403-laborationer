@@ -2,6 +2,7 @@
 
 var makePerson = function(persArr)
 {
+    var summa = 0;
     for (var i = 0; i < persArr.length; i++)    {
         summa += parseInt(persArr[i].age);
     }
@@ -29,9 +30,13 @@ var makePerson = function(persArr)
     }
     )
     .join(", ");
-    var obj =
+    var resultat =
     {
         minAge:min,maxAge:max,averageAge:average,names:str
     };
+    return resultat;
 }
+var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
+var result = makePerson(data);
+console.log(result);
 
