@@ -15,7 +15,7 @@ window.onload = function(){
         
         if (!CheckInput) 
         {
-            return ["Ange i formatet ÅÅÅÅ-MM-DD."]
+            throw new Error("ERROR! Ange såhär ÅÅÅÅ-MM-DD.");
         }
         else if(dateEnd - now < 0)
         {
