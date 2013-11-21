@@ -8,10 +8,9 @@ window.onload = function(){
 	    // Din kod här.
 	    var input = new RegExp("^([0-9]{4})-([0-9]{2})-([0-9]{2})");
         var CheckInput = input.exec(date);
-        var dateSplit = date.split("-");
         var now = new Date()
         var thisYear = now.getFullYear()
-        var dateEnd = new Date(thisYear, dateSplit[1] - 1, dateSplit[2]);
+        var dateEnd = new Date(date+"T23:59:59");
         
         if (!CheckInput) 
         {
@@ -21,7 +20,7 @@ window.onload = function(){
         {
             dateEnd.setFullYear(thisYear);
         }
-        return Math.ceil((dateEnd - now) / (1000*60*60*24));
+        return Math.floor((dateEnd - now) / (1000*60*60*24));
 	};
 	// ------------------------------------------------------------------------------
 
