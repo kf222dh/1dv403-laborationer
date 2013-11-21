@@ -5,28 +5,39 @@ window.onload = function(){
 	
 	var birthday = function(date)
 	{
-	    // Din kod här.
-	    var input = new RegExp("^([0-9]{4})-([0-9]{2})-([0-9]{2})");
-        var CheckInput = input.exec(date);
-        var now = new Date()
-        var thisYear = now.getFullYear()
-        var dateEnd = new Date(date+"T23:59:59");
-        
-        if (!CheckInput) 
-        {
-            throw new Error("ERROR! Ange såhär ÅÅÅÅ-MM-DD.");
-        }
-        else if(dateEnd - now < 0)
-        {
-            dateEnd.setFullYear(thisYear+ 1);
-        }
-        return Math.floor((dateEnd - now) / (1000*60*60*24));
-	};
+	// Din kod här.
+    var now = new Date();
+    var input = new RegExp("^([0-9]{4})-([0-9]{2})-([0-9]{2})");
+    
+    if(!input)
+    {
+    throw new Error("Ange i formatet YYYY-MM-DD");
+    }
+    
+    input.setFullYear(now.getFullYear());
+    
+    if(input.getTime() < now.getTime())
+    {
+        input.setFullYear(now.getFullYear() + 1);
+    }
+    
+    var todayMs =now.getTime();
+    var myBirthdayMs = input.getTime();
+
+    if (now.getHours() > 12)
+    {
+    return Math.round((myBirthdayMs - todayMs/1000*60*60*24) +1);
+    }
+    else
+    {
+    } 
+    return Math.round(myBirthdayMs - todayMs/1000*60*60*24);
+    };
 	// ------------------------------------------------------------------------------
 
 
 	// Kod för att hantera utskrift och inmatning. Denna ska du inte behöva förändra
-	var p = document.querySelector("#value"); // Referens till DOM-noden med id="#value"
+	var p = document.querySelector("#value"); // Referens iltl DOM-noden med id="#value"
 	var input = document.querySelector("#string");
 	var submit = document.querySelector("#send");
 
