@@ -7,31 +7,27 @@ window.onload = function(){
 	{
 	// Din kod här.
     var now = new Date();
-    var input = new RegExp("^([0-9]{4})-([0-9]{2})-([0-9]{2})");
+    var input = new Date(date.replace(/(\d{4})\.(\d{2})\.(\d{2})/, '$3-$2-$1'));
+    input.setFullYear(now.getFullYear());
     
-    if(!input)
+    if(isNaN(input))
     {
     throw new Error("Ange i formatet YYYY-MM-DD");
     }
-    
-    input.setFullYear(now.getFullYear());
     
     if(input.getTime() < now.getTime())
     {
         input.setFullYear(now.getFullYear() + 1);
     }
     
-    var todayMs =now.getTime();
-    var myBirthdayMs = input.getTime();
-
-    if (now.getHours() > 12)
+    if(now.getHours() > 12)
     {
-    return Math.round((myBirthdayMs - todayMs/1000*60*60*24) +1);
+    return Math.round((input.getTime() - now.getTime())/(1000*60*60*24) +1);
     }
     else
     {
     } 
-    return Math.round(myBirthdayMs - todayMs/1000*60*60*24);
+    return Math.round((input.getTime() - now.getTime())/(1000*60*60*24));
     };
 	// ------------------------------------------------------------------------------
 
