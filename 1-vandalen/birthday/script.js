@@ -18,7 +18,7 @@ window.onload = function(){
         }
         else if(dateEnd - now < 0)
         {
-            dateEnd.setFullYear(thisYear);
+            dateEnd.setFullYear(thisYear+ 1);
         }
         return Math.floor((dateEnd - now) / (1000*60*60*24));
 	};
