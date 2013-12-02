@@ -14,26 +14,21 @@ function Message(message, date)
 	
 	this.getDate = function()
 	{
-	    
+	    return dateSorted(date, "HH:MM:ss");
 	}
 	
 	this.setDate = function(_date)
 	{
-	    
+	    date = date;
 	}
-
+	
+	this.getFullDate = function()
+	{
+		return dateSorted(date, "d mmmm yyyy t HH:MM:ss");
+	}
 }
 	
-Message.prototype.toString = function() {
-	return this.getText()+" ("this.getDate()+")";
-}
-
-Message.prototype.getHTMLText = function()
+Message.prototype.toString = function()
 {
-    
-}
-
-Message.prototype.getDateText = function()
-{
-    
+    return this.getString()+ "<p class=\"Time\">" +this.getDate()+"</p>";
 }
