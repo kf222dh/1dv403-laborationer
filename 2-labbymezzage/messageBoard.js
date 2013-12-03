@@ -10,5 +10,22 @@ var MessageBoard =
         var arrayNumbeer = this.messages.push(mess);
 		this.renderMessages();
 		this.countMessages();
-    }
+    },
+    
+    createMessage: function(messageID)
+    {
+		var listMessage  = document.getElementById("listMessage");
+		
+		var meddelanden = document.createElement("div");
+		
+		meddelanden.className = "meddelande";
+		
+		listMessage .appendChild(meddelanden);
+		
+		var p = document.createElement("p");
+		
+		p.innerHTML = this.messages[messageID].getHTMLText();
+		
+		meddelanden.appendChild(p);
+	}
 }
