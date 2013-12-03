@@ -1,0 +1,74 @@
+body {
+    font-family: 'Roboto', sans-serif;
+	color: #4D4C4C;
+	text-align: left;
+    background-color:#ffe9bc;
+	margin: 0;
+}
+
+#content {
+	position: fixed;
+	left: 100px;
+	top: 40px;
+	width: 1000px;
+	margin: auto;
+	text-align: left;
+	background-color: #FFBB33;
+}
+
+#messageBoard {
+	background-color: rgb(255, 206, 101);
+	padding: 40px 40px 10px 40px;
+}
+
+#listMessage {
+	background-color: #fff;
+}
+
+#antal {
+	text-align: right;
+	margin: 10px 5px;
+	color: #fff;
+} 
+
+.r-align {
+	text-align: right;
+	margin: 10px;
+} 
+
+h1 {
+	line-height: 1.3em;
+	margin: 0.4em 0 0.6em 0;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	text-decoration: underline;
+}
+
+p {
+	font-size: 13px;
+	line-height: 1.4em;
+	margin: 0.2em 0 0.5em 0;
+	font-style: normal;
+	font-weight: normal;
+}
+
+a:link {
+	color: #333333; opacity:0.6;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #333333; opacity:0.3;
+	text-decoration: none;
+}
+
+a:hover {
+	background: #FFFFFF; opacity:0.3;
+	text-decoration: none;
+}
+
+a:active {
+	font-weight: bold; opacity:0.8;
+	text-decoration: none;
+}
