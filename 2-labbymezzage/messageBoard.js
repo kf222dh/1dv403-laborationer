@@ -27,5 +27,15 @@ var MessageBoard =
 		p.innerHTML = this.messages[messageID].getHTMLText();
 		
 		meddelanden.appendChild(p);
+	},
+	
+	renderMessages: function(){
+		
+	document.getElementById("listMessage").innerHTML = "";
+		
+	for (var i = 0; i < this.messages.length; ++i)
+	{
+		this.createMessage(i);
+	}
 	}
 }
