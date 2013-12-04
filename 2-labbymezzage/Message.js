@@ -33,10 +33,12 @@ Message.prototype.toString = function()
     return this.getText()+ "<p class=\"tid\">" +this.getDate()+"</p>";
 }
 
-Message.prototype.getHTMLText = function() {
+Message.prototype.getHTMLText = function()
+{
 	return this.getText().replace(/[\n\r]/g, "<br />" )+ "<p class=\"tiden\">" +this.getDate()+"</p>";
 }
 
-Message.prototype.getDateText = function() {
+Message.prototype.getDateText = function()
+{
 	return "Skapades den: " +this.getFullDate();
 }

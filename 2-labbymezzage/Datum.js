@@ -1,4 +1,4 @@
-var dateFormat = function () {
+var dateSorted = function () {
 	var	token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,
 		timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g,
 		timezoneClip = /[^-+\dA-Z]/g,
@@ -10,7 +10,7 @@ var dateFormat = function () {
 		};
 
 	return function (date, mask, utc) {
-		var dF = dateFormat;
+		var dF = dateSorted;
 
 		if (arguments.length == 1 && Object.prototype.toString.call(date) == "[object String]" && !/\d/.test(date)) {
 			mask = date;
@@ -73,7 +73,7 @@ var dateFormat = function () {
 	};
 }();
 
-dateFormat.masks = {
+dateSorted.masks = {
 	"default":      "ddd mmm dd yyyy HH:MM:ss",
 	shortDate:      "m/d/yy",
 	mediumDate:     "mmm d, yyyy",
@@ -88,7 +88,7 @@ dateFormat.masks = {
 	isoUtcDateTime: "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'"
 };
 
-dateFormat.i18n = {
+dateSorted.i18n = {
 	dayNames: [
 		"Sön", "Mån", "Tis", "Ons", "Tor", "Fre", "Lör",
 		"Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag"
@@ -100,7 +100,7 @@ dateFormat.i18n = {
 };
 
 Date.prototype.format = function (mask, utc) {
-	return dateFormat(this, mask, utc);
+	return dateSorted(this, mask, utc);
 };
 /* Tagen från : http://blog.stevenlevithan.com/archives/date-time-format */
 
