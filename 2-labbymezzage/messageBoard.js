@@ -29,7 +29,8 @@ var MessageBoard =
 		meddelanden.appendChild(p);
 	},
 	
-	renderMessages: function(){
+	renderMessages: function()
+	{
 		
 	document.getElementById("listMessage").innerHTML = "";
 		
@@ -37,5 +38,18 @@ var MessageBoard =
 	{
 		this.createMessage(i);
 	}
+	
+	},
+	
+	removeMessage: function(messageID)
+	{
+	var conf = window.confirm("Säker på att du vill radera meddelandet?");
+	if (conf)
+	{
+	this.messages.splice(messageID, 1);
+	}
+	else {}
+	this.renderMessages();
+	this.countMessages();
 	}
 }
