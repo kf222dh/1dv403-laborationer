@@ -92,7 +92,7 @@ var MessageBoard =
 	},
 	
 	removeMessage: function(messageID)
-{	
+    {	
 	var conf = window.confirm("Säker på att du vill radera meddelandet?");
 	
 	if (conf)
@@ -121,4 +121,4 @@ var MessageBoard =
 	antal.innerHTML = temp;
 	
 	}
-}
+};

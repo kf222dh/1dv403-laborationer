@@ -9,23 +9,19 @@ var dateFormat = function () {
 			return val;
 		};
 
-	// Regexes and supporting functions are cached through closure
 	return function (date, mask, utc) {
 		var dF = dateFormat;
 
-		// You can't provide utc if you skip other args (use the "UTC:" mask prefix)
 		if (arguments.length == 1 && Object.prototype.toString.call(date) == "[object String]" && !/\d/.test(date)) {
 			mask = date;
 			date = undefined;
 		}
 
-		// Passing date through Date applies Date.parse, if necessary
 		date = date ? new Date(date) : new Date;
 		if (isNaN(date)) throw SyntaxError("invalid date");
 
 		mask = String(dF.masks[mask] || mask || dF.masks["default"]);
 
-		// Allow setting the utc argument via the mask
 		if (mask.slice(0, 4) == "UTC:") {
 			mask = mask.slice(4);
 			utc = true;
@@ -77,7 +73,6 @@ var dateFormat = function () {
 	};
 }();
 
-// Some common format strings
 dateFormat.masks = {
 	"default":      "ddd mmm dd yyyy HH:MM:ss",
 	shortDate:      "m/d/yy",
@@ -107,3 +102,5 @@ dateFormat.i18n = {
 Date.prototype.format = function (mask, utc) {
 	return dateFormat(this, mask, utc);
 };
+/* Tagen från : http://blog.stevenlevithan.com/archives/date-time-format */
+
