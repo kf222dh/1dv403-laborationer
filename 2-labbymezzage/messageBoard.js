@@ -42,9 +42,9 @@ var MessageBoard =
 		
 		var imgKlock = document.createElement("img");
 
-		imgKlock.src = "bilder/klocka.png";
+		imgKlock.src = "bilder/Klocka.png";
 
-		imgKlock.alt = "tidsstämpel!";
+		imgKlock.alt = "Tidsstämpel!";
 
 		var that = this;
 
@@ -56,6 +56,27 @@ var MessageBoard =
 		aTagg2.appendChild(imgKlock);
 
 		icons.appendChild(aTagg2);
+				
+		var aTagg = document.createElement("a");
+
+		aTagg.href = "#";
+		
+		var imgDel = document.createElement("img");
+
+		imgDel.src = "bilder/taBort.png";
+
+		imgDel.alt = "Ta bort";
+
+		imgDel.onclick = function()
+		{
+			MessageBoard.removeMessage(messageID);
+		}
+		
+		aTagg.appendChild(imgDel);
+
+		icons.appendChild(aTagg);
+
+		ikoner.appendChild(icons);
 	},
 	
 	renderMessages: function()
