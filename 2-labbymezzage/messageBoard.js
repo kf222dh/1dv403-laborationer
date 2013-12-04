@@ -51,5 +51,15 @@ var MessageBoard =
 	else {}
 	this.renderMessages();
 	this.countMessages();
+	},
+	
+	countMessages: function()
+	{
+	var antal = document.getElementById("antal");
+	antal.innerHTML = "";
+	var temp = "<p>";
+	temp += "Antal meddelanden: " +this.messages.length;
+	temp += "</p>";
+	antal.innerHTML = temp;
 	}
 }
