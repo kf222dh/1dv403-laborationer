@@ -27,6 +27,35 @@ var MessageBoard =
 		p.innerHTML = this.messages[messageID].getHTMLText();
 		
 		meddelanden.appendChild(p);
+		
+		var ikoner = document.createElement("div");
+
+		ikoner.className = "ikoner";
+
+		meddelanden.insertBefore(ikoner, meddelanden.firstChild);
+		
+		var icons = document.createElement("p");
+		
+		var aTagg2 = document.createElement("a");
+
+		aTagg2.href = "#";
+		
+		var imgKlock = document.createElement("img");
+
+		imgKlock.src = "bilder/klocka.png";
+
+		imgKlock.alt = "tidsstämpel!";
+
+		var that = this;
+
+		imgKlock.onclick = function()
+		{
+			alert(that.messages[messageID].getDateText());
+		}
+		
+		aTagg2.appendChild(imgKlock);
+
+		icons.appendChild(aTagg2);
 	},
 	
 	renderMessages: function()
@@ -42,24 +71,33 @@ var MessageBoard =
 	},
 	
 	removeMessage: function(messageID)
-	{
+{	
 	var conf = window.confirm("Säker på att du vill radera meddelandet?");
+	
 	if (conf)
 	{
-	this.messages.splice(messageID, 1);
+	    this.messages.splice(messageID, 1);
 	}
+	
 	else {}
-	this.renderMessages();
-	this.countMessages();
+	    this.renderMessages();
+    	this.countMessages();
 	},
 	
 	countMessages: function()
 	{
+	    
 	var antal = document.getElementById("antal");
+	
 	antal.innerHTML = "";
+	
 	var temp = "<p>";
+	
 	temp += "Antal meddelanden: " +this.messages.length;
+	
 	temp += "</p>";
+	
 	antal.innerHTML = temp;
+	
 	}
 }
