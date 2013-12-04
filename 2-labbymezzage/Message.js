@@ -30,11 +30,11 @@ function Message(message, date)
 	
 Message.prototype.toString = function()
 {
-    return this.getText()+" ("+this.getDate()+")";
+    return this.getText()+ "<p class=\"tid\">" +this.getDate()+"</p>";
 }
 
 Message.prototype.getHTMLText = function() {
-	return this.getText().replace(/[\n]/g, "<br />");
+	return this.getText().replace(/[\n\r]/g, "<br />" )+ "<p class=\"tiden\">" +this.getDate()+"</p>";
 }
 
 Message.prototype.getDateText = function() {
