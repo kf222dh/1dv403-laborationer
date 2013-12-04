@@ -14,7 +14,7 @@ var messageApp =
 			
 			area.value = "";
 		};
-		
+		//Ser till att det går att skicka meddelande med enter-tagenten och att skapa ny rad med shift+enter.
 		area.onkeypress = function(e)
 		{
 			e = e || event;
@@ -33,4 +33,5 @@ var messageApp =
 	}	
 	
 };
+//När sidan har laddat då anropas init.
 window.onload = messageApp.init;

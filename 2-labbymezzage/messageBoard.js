@@ -2,10 +2,12 @@
 
 var MessageBoard =
 {
+    //Arrayen som kommer att innehålla alla meddelanden.
 	messages: [],
 	
 	init: function(e)
 	{
+	    // Skapar ett nytt meddelandeobjekt
 		var mess = new Message(e, new Date());
         var arrayNumbeer = this.messages.push(mess);
 		this.renderMessages();

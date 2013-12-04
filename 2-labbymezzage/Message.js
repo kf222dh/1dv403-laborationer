@@ -32,12 +32,12 @@ Message.prototype.toString = function()
 {
     return this.getText()+ "<p class=\"tid\">" +this.getDate()+"</p>";
 }
-
+//Ersätter radbrytningarna, \n med <br /> och lägger till en p tagg med namnet tiden
 Message.prototype.getHTMLText = function()
 {
 	return this.getText().replace(/[\n\r]/g, "<br />" )+ "<p class=\"tiden\">" +this.getDate()+"</p>";
 }
-
+//Funktionen som skickar tillbacka tiden
 Message.prototype.getDateText = function()
 {
 	return "Skapades den: " +this.getFullDate();
