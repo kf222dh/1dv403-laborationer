@@ -13,7 +13,6 @@ function MemoryBoard(memoryID, rows, cols)
 window.onload = function()
 {
     
-    new MemoryBoard("Board1").init();
-    new MemoryBoard("Board2").init();
+    new MemoryBoard("Board1", 4, 4).init();
     
 }
