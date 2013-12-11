@@ -2,7 +2,7 @@
 
 function MemoryBoard(memoryID, rows, cols)
 {
-    randomArray = [];
+    this.randomArray = [];
     
     this.init = function()
     {
@@ -11,9 +11,15 @@ function MemoryBoard(memoryID, rows, cols)
         var i = 0;
         var x = 0;
         var picCounter = 0;
+        
+        var lastAlternative = null;
+        var picUp = 0;
+        var This = this;
+        
+        
 
-        table = document.createElement("table");
-        div = document.querySelector("div#" + memoryID);
+        var table = document.createElement("table");
+        var div = document.getElementById(memoryID);
         var tr = document.createElement("tr");
         var img = document.createElement("img");
         var anchor = document.createElement("a");
@@ -37,15 +43,64 @@ function MemoryBoard(memoryID, rows, cols)
 
                anchor.setAttribute("href", "#");
                
-               anchor.addEventListener("click", function (e)
+               anchor.setAttribute("id", picCounter + memoryID);
+               
+               anchor.onclick = function (e)
                {
                    
                     e.preventDefault();
+                    
+                    var presentAlternative = e.currentTarget.getAttribute("id");
+                    
+                    if (lastAlternative === presentAlternative)
+                    {
 
-                    e.currentTarget.firstChild.setAttribute("src", "pics/" + e.currentTarget.getAttribute("class") + ".png");
+                        return;
 
-                },
-                false);
+                    }
+                    
+                    else
+                    {
+
+                        if (picUp < 2)
+                        {
+
+                            This.turnUp(presentAlternative);
+
+                            picUp += 1;
+
+                        }
+
+                        if (!lastAlternative)
+                        {
+
+                            lastAlternative = presentAlternative;
+
+                        }
+
+                        if (picUp >= 2)
+                        {
+
+                            setTimeout(function ()
+                            {
+
+                                This.turnDown(presentAlternative);
+
+                                This.turnDown(lastAlternative);
+
+                                picUp = 0;
+
+                                lastAlternative = null;
+
+                            },
+                            
+                            10000);
+
+                        }
+
+                    }
+
+                };
 
                picCounter += 1;
                
@@ -59,7 +114,28 @@ function MemoryBoard(memoryID, rows, cols)
         
     };
     
+        this.turnDown = function (nodeId)
+        {
+
+        node.firstChild.setAttribute("src", "pics/0.png");
+        
+        var node = document.getElementById(nodeId);
+
+        }
+        
+        this.turnUp = function (nodeId)
+        {
+            
+        node.firstChild.setAttribute("src", "pics/" + index + ".png");
+
+        var node = document.getElementById(nodeId),
+
+        index = node.getAttribute("class");
+
+    }
+    
 }
+
 window.onload = function()
 {
     
