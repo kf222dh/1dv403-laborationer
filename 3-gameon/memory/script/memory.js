@@ -1,3 +1,5 @@
+(function()
+{
 "use strict";
 
 function MemoryBoard(memoryID, rows, cols)
@@ -6,6 +8,7 @@ function MemoryBoard(memoryID, rows, cols)
     
     this.init = function()
     {
+        
         this.randomArray = RandomGenerator.getPictureArray(rows, cols);
         
         var i = 0;
@@ -28,38 +31,37 @@ function MemoryBoard(memoryID, rows, cols)
         var countGuesses = 0;
         var duoFounded = 0;
         
-        pressDiv = document.createElement("div");
+        var againButton = document.createElement("button");
+        var clickEvent;
 
         pressDiv.setAttribute("id", memoryID + "info");
+        
+        pressDiv.setAttribute("id", memoryID + "Info");
+        
+        pressDiv.setAttribute("class", "gameBoardinfo");
 
         p = document.createElement("p");
 
         pressDiv.appendChild(p);
-
-        for (i = 1; i <= rows; i += 1)
+        
+        againButton.setAttribute("type", "button");
+        
+        againButton.innerHTML = "Nytt försök";
+        
+        againButton.setAttribute("disabled", "disabled");
+        
+        againButton.setAttribute("class", "notInUse");
+        
+        againButton.onclick = function ()
         {
-            
-           for (x = 1; x <= cols; x += 1)
-           {
-               
-               img.setAttribute("src", "pics/0.png")
-
-               anchor.appendChild(img);
-
-               td.appendChild(anchor);
-
-               tr.appendChild(td);
-               
-               anchor.setAttribute("class", this.memoryCards[picCounter])
-
-               anchor.setAttribute("href", "#");
-               
-               anchor.setAttribute("id", picCounter + memoryID);
-               
-               picCounter += 1;
-               
-               anchor.onclick = function (e)
-               {
+            div.removeChild(table);
+            div.removeChild(pressDiv);
+            div.removeChild(againButton);
+            This.init();
+        };
+        
+                    clickEvent = function (e)
+                    {
                    
                     e.preventDefault();
                     
@@ -67,8 +69,6 @@ function MemoryBoard(memoryID, rows, cols)
                     
                     if (lastAlternative === presentAlternative)
                     {
-
-                        return;
 
                     }
                     
@@ -135,11 +135,47 @@ function MemoryBoard(memoryID, rows, cols)
                             }
 
                         }
+                        
+                        if (duoFounded >= This.memoryCards.length / 2)
+                        
+                        {
+                            
+                        againButton.removeAttribute("disabled");
+                        
+                        againButton.removeAttribute("class");
+                        
+                        This.writeInfo("Du behövde " + countGuesses +
+                            " gissningar för att vinna!");
+                        }
 
                     }
 
                 };
+
+        for (i = 1; i <= rows; i += 1)
+        {
+            
+           for (x = 1; x <= cols; x += 1)
+           {
                
+               img.setAttribute("src", "pics/0.png");
+
+               anchor.appendChild(img);
+
+               td.appendChild(anchor);
+
+               tr.appendChild(td);
+               
+               anchor.setAttribute("class", (this.randomArray[picCounter] + "Klickbar!"));
+
+               anchor.setAttribute("href", "#");
+               
+               anchor.setAttribute("id", picCounter + memoryID);
+               
+               picCounter += 1;
+               
+               anchor.onclick = clickEvent;
+
             }
 
             table.appendChild(tr);
@@ -150,29 +186,32 @@ function MemoryBoard(memoryID, rows, cols)
         
         div.appendChild(pressDiv);
         
+        div.appendChild(againButton);
+        
         This.writeInfo("Par kvar att hitta: " + (This.memoryCards.length / 2 - duoFounded) + "<br />Antal gissningar kvar : " + countGuesses);
         
     };
     
         this.turnDown = function (nodeId)
         {
-
-        node.firstChild.setAttribute("src", "pics/0.png");
-        
+            
         var node = document.getElementById(nodeId);
 
-        }
+        node.firstChild.setAttribute("src", "pics/0.png");
+
+        };
         
         this.turnUp = function (nodeId)
         {
             
+        var node = document.getElementById(nodeId),
+        
+        index = node.getAttribute("class");
+            
         node.firstChild.setAttribute("src", "pics/" + index + ".png");
 
-        var node = document.getElementById(nodeId),
 
-        index = node.getAttribute("class");
-
-        }
+        };
         
         this.compareSrc = function (nodeId1, nodeId2)
         {
@@ -183,7 +222,7 @@ function MemoryBoard(memoryID, rows, cols)
 
         return (src1 === src2);
 
-        }
+        };
 
         this.setEventToNull = function (nodeId)
         {
@@ -192,7 +231,7 @@ function MemoryBoard(memoryID, rows, cols)
 
            node.onclick = null;
 
-        }
+        };
 
         this.writeInfo = function (text) 
         {
@@ -201,13 +240,9 @@ function MemoryBoard(memoryID, rows, cols)
 
         node.firstChild.innerHTML = text;
 
-    }
+        };
     
 }
-
-window.onload = function()
-{
-    
     new MemoryBoard("Board1", 4, 4).init();
     
-}
+}());
