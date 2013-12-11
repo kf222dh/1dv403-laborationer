@@ -15,8 +15,6 @@ function MemoryBoard(memoryID, rows, cols)
         var lastAlternative = null;
         var picUp = 0;
         var This = this;
-        
-        
 
         var table = document.createElement("table");
         var div = document.getElementById(memoryID);
@@ -24,6 +22,19 @@ function MemoryBoard(memoryID, rows, cols)
         var img = document.createElement("img");
         var anchor = document.createElement("a");
         var td = document.createElement("td");
+        var pressDiv = document.createElement("div");
+        var p = document.createElement("p");
+        
+        var countGuesses = 0;
+        var duoFounded = 0;
+        
+        pressDiv = document.createElement("div");
+
+        pressDiv.setAttribute("id", memoryID + "info");
+
+        p = document.createElement("p");
+
+        pressDiv.appendChild(p);
 
         for (i = 1; i <= rows; i += 1)
         {
@@ -44,6 +55,8 @@ function MemoryBoard(memoryID, rows, cols)
                anchor.setAttribute("href", "#");
                
                anchor.setAttribute("id", picCounter + memoryID);
+               
+               picCounter += 1;
                
                anchor.onclick = function (e)
                {
@@ -68,41 +81,64 @@ function MemoryBoard(memoryID, rows, cols)
                             This.turnUp(presentAlternative);
 
                             picUp += 1;
-
-                        }
-
-                        if (!lastAlternative)
-                        {
-
-                            lastAlternative = presentAlternative;
+                            
+                            if (!lastAlternative)
+                            {
+                                
+                                lastAlternative = presentAlternative;
+                                
+                            }
 
                         }
 
                         if (picUp >= 2)
                         {
 
-                            setTimeout(function ()
+                            if (This.compareSrc(presentAlternative, lastAlternative))
                             {
 
-                                This.turnDown(presentAlternative);
+                                This.setEventToNull(presentAlternative);
 
-                                This.turnDown(lastAlternative);
+                                This.setEventToNull(lastAlternative);
 
                                 picUp = 0;
 
                                 lastAlternative = null;
-
-                            },
+                                
+                                duoFounded += 1;
+                                
+                                countGuesses += 1;
+                                
+                                This.writeInfo("Par kvar att hitta: " + (This.memoryCards.length / 2 - duoFounded) + "<br />Antal gissningar kvar : " + countGuesses);
+                                
+                            }
                             
-                            10000);
+                            else
+                            {
+                                    setTimeout(function ()
+                                    {
+                                        
+                                    This.turnDown(presentAlternative);
+
+                                    This.turnDown(lastAlternative);
+
+                                    picUp = 0;
+
+                                    lastAlternative = null;
+                                    
+                                    countGuesses += 1;
+                                    
+                                    This.writeInfo("Par kvar att hitta: " + (This.memoryCards.length / 2 - duoFounded) + "<br />Antal gissningar kvar : " + countGuesses);
+
+                                },
+                                1000);
+                            }
 
                         }
 
                     }
 
                 };
-
-               picCounter += 1;
                
             }
 
@@ -111,6 +147,10 @@ function MemoryBoard(memoryID, rows, cols)
         }
 
         div.appendChild(table);
+        
+        div.appendChild(pressDiv);
+        
+        This.writeInfo("Par kvar att hitta: " + (This.memoryCards.length / 2 - duoFounded) + "<br />Antal gissningar kvar : " + countGuesses);
         
     };
     
@@ -131,6 +171,35 @@ function MemoryBoard(memoryID, rows, cols)
         var node = document.getElementById(nodeId),
 
         index = node.getAttribute("class");
+
+        }
+        
+        this.compareSrc = function (nodeId1, nodeId2)
+        {
+
+        var src1 = document.getElementById(nodeId1).firstChild.getAttribute("src");
+
+        var src2 = document.getElementById(nodeId2).firstChild.getAttribute("src");
+
+        return (src1 === src2);
+
+        }
+
+        this.setEventToNull = function (nodeId)
+        {
+
+            var node = document.getElementById(nodeId);
+
+           node.onclick = null;
+
+        }
+
+        this.writeInfo = function (text) 
+        {
+
+        var node = document.getElementById(memoryID + "info");
+
+        node.firstChild.innerHTML = text;
 
     }
     
