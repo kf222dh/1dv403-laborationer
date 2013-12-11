@@ -10,7 +10,7 @@ function MemoryBoard(memoryID, rows, cols)
         
         var i = 0;
         var x = 0;
-        var y = 0;
+        var picCounter = 0;
 
         table = document.createElement("table");
         div = document.querySelector("div#" + memoryID);
@@ -25,16 +25,30 @@ function MemoryBoard(memoryID, rows, cols)
            for (x = 1; x <= cols; x += 1)
            {
                
-               img.setAttribute("src", "pics/" + this.randomArray[y] + ".png");
+               img.setAttribute("src", "pics/0.png")
 
                anchor.appendChild(img);
 
                td.appendChild(anchor);
 
                tr.appendChild(td);
+               
+               anchor.setAttribute("class", this.memoryCards[picCounter])
 
-               y += 1;
+               anchor.setAttribute("href", "#");
+               
+               anchor.addEventListener("click", function (e)
+               {
+                   
+                    e.preventDefault();
 
+                    e.currentTarget.firstChild.setAttribute("src", "pics/" + e.currentTarget.getAttribute("class") + ".png");
+
+                },
+                false);
+
+               picCounter += 1;
+               
             }
 
             table.appendChild(tr);
