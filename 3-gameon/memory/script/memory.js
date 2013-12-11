@@ -7,6 +7,42 @@ function MemoryBoard(memoryID, rows, cols)
     this.init = function()
     {
         this.randomArray = RandomGenerator.getPictureArray(rows, cols);
+        
+        var i = 0;
+        var x = 0;
+        var y = 0;
+
+        table = document.createElement("table");
+        div = document.querySelector("div#" + memoryID);
+        var tr = document.createElement("tr");
+        var img = document.createElement("img");
+        var anchor = document.createElement("a");
+        var td = document.createElement("td");
+
+        for (i = 1; i <= rows; i += 1)
+        {
+            
+           for (x = 1; x <= cols; x += 1)
+           {
+               
+               img.setAttribute("src", "pics/" + this.randomArray[y] + ".png");
+
+               anchor.appendChild(img);
+
+               td.appendChild(anchor);
+
+               tr.appendChild(td);
+
+               y += 1;
+
+            }
+
+            table.appendChild(tr);
+
+        }
+
+        div.appendChild(table);
+        
     };
     
 }
