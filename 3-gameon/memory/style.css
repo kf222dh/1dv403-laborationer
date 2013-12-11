@@ -1,15 +1,59 @@
-body {
-    background: #2b2922;
+body
+{
+    font-family: 'Roboto', sans-serif;
     font-size: 100%;
+    background-color:#ffe9bc;
 }
 
-div#content {
+#content
+{
     width: 400px;
     background: inherit;
     margin: auto;
 }
 
-div.boardCSS {
+div.boardCSS table
+{
+    width: auto;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+div.boardCSS table a
+{
+    border: none;
+    margin: 2px;
+}
+        
+div.boardCSS table .clickable
+{
+    cursor: pointer;
+}
+        
+div.boardCSS div.Boardinfo p
+{
+    width: 100%;
+    color: #a32500;
+    text-align: center;
+    cursor: default;
+}
+
+div.boardCSS button
+{
+    width: 80%;
+    line-height: 1.6;
+    padding: 2px;
+    margin-left: 10%;
+    border: outset 2px #fff;
+    cursor: pointer;
+    color: #fff;
+    background: #a32500;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+div.boardCSS
+{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -20,53 +64,14 @@ div.boardCSS {
     border: groove 10px #a32500;
 }
 
-    div.boardCSS table {
-        width: auto;
-        margin: auto;
-        margin-bottom: 10px;
-    }
+div.boardCSS div.Boardinfo
+{
+    width: 100%;
+    height: 4.5em;
+}
 
-        div.boardCSS table a {
-            border: none;
-            margin: 2px;
-        }
-        
-        div.boardCSS table a.clickable {
-            cursor: pointer;
-        }
-        
-        div.boardCSS table a.unclickable {
-            cursor: default;
-        }
-
-    div.boardCSS div.gameBoardinfo {
-        width: 100%;
-        height: 4.5em;
-    }
-
-        div.boardCSS div.gameBoardinfo p {
-            width: 100%;
-            color: #a32500;
-            font-family: Andalus, 'Bookman Old Style', serif;
-            text-align: center;
-            cursor: default;
-        }
-
-    div.boardCSS button {
-        width: 80%;
-        line-height: 1.6;
-        padding: 2px;
-        margin-left: 10%;
-        border: outset 2px #fff;
-        cursor: pointer;
-        color: #fff;
-        background: #a32500;
-        letter-spacing: 2px;
-        font-weight: bold;
-        font-family: Andalus, 'Bookman Old Style', serif;
-    }
-
-        div.boardCSS button.notInUse {
-            opacity: 0.5;
-            cursor: default;
-        }
+div.boardCSS .notInUse
+{
+    opacity: 0.5;
+    cursor: default;
+}

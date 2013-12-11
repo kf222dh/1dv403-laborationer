@@ -243,6 +243,6 @@ function MemoryBoard(memoryID, rows, cols)
         };
     
 }
-    new MemoryBoard("Board1", 4, 4).init();
+    new MemoryBoard("Board", 3, 4).init();
     
 }());
