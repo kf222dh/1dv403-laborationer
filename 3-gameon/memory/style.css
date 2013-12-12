@@ -33,7 +33,7 @@ div.boardCSS table .clickable
 div.boardCSS div.Boardinfo p
 {
     width: 100%;
-    color: #a32500;
+    color: #007da3;
     text-align: center;
     cursor: default;
 }
@@ -46,16 +46,13 @@ div.boardCSS button
     margin-left: 30%;
     cursor: pointer;
     color: #fff;
-    background: #a32500;
+    background: #007da3;
     letter-spacing: 4px;
     font-weight: bold;
 }
 
 div.boardCSS
 {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     width: 100%;
     background: #fff;
     margin: 40px auto;

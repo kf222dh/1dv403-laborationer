@@ -60,11 +60,11 @@
             
             clickEvent = function (e)
             {
-                var currentChoice = e.currentTarget.getAttribute("id");
+                var presentAlternativ = e.currentTarget.getAttribute("id");
                 
                 e.preventDefault();
 
-                if (lastAlternativ === currentChoice)
+                if (lastAlternativ === presentAlternativ)
                 {
                 } 
                 
@@ -74,14 +74,14 @@
                     if (picUp < 2)
                     {
                         
-                        This.turnUp(currentChoice);
+                        This.turnUp(presentAlternativ);
                         
                         picUp += 1;
                         
                         if (!lastAlternativ) 
                         {
                             
-                            lastAlternativ = currentChoice;
+                            lastAlternativ = presentAlternativ;
                             
                         }
                     }
@@ -89,9 +89,9 @@
                     if (picUp >= 2)
                     {
                         
-                        if (This.compareSrc(currentChoice, lastAlternativ))
+                        if (This.compareSrc(presentAlternativ, lastAlternativ))
                         {
-                            This.setEventToNull(currentChoice);
+                            This.setEventToNull(presentAlternativ);
                             
                             This.setEventToNull(lastAlternativ);
                             
@@ -112,7 +112,7 @@
                             setTimeout(function ()
                             {
                                 
-                                This.turnDown(currentChoice);
+                                This.turnDown(presentAlternativ);
                                 
                                 This.turnDown(lastAlternativ);
                                 
@@ -243,7 +243,7 @@
         };
     }
     
-    new MemoryBoard("Board", 6, 6).init();
+    new MemoryBoard("Board", 4, 4).init();
     
 }
 ());
