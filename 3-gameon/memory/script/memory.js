@@ -60,11 +60,11 @@
             
             clickEvent = function (e)
             {
-                var presentAlternativ = e.currentTarget.getAttribute("id");
+                var currentChoice = e.currentTarget.getAttribute("id");
                 
                 e.preventDefault();
 
-                if (lastAlternativ === presentAlternativ)
+                if (lastAlternativ === currentChoice)
                 {
                 } 
                 
@@ -74,14 +74,14 @@
                     if (picUp < 2)
                     {
                         
-                        This.turnUp(presentAlternativ);
+                        This.turnUp(currentChoice);
                         
                         picUp += 1;
                         
                         if (!lastAlternativ) 
                         {
                             
-                            lastAlternativ = presentAlternativ;
+                            lastAlternativ = currentChoice;
                             
                         }
                     }
@@ -89,9 +89,9 @@
                     if (picUp >= 2)
                     {
                         
-                        if (This.compareSrc(presentAlternativ, lastAlternativ))
+                        if (This.compareSrc(currentChoice, lastAlternativ))
                         {
-                            This.setEventToNull(presentAlternativ);
+                            This.setEventToNull(currentChoice);
                             
                             This.setEventToNull(lastAlternativ);
                             
@@ -112,7 +112,7 @@
                             setTimeout(function ()
                             {
                                 
-                                This.turnDown(presentAlternativ);
+                                This.turnDown(currentChoice);
                                 
                                 This.turnDown(lastAlternativ);
                                 
