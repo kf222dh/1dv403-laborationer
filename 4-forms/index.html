@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+	<meta charset="UTF-8" />
+ 	<title>Valideringen</title>
+ 	<link href="style.css" rel="stylesheet" media="screen"  type="text/css" />
+</head>
+    <body>
+    <div id="content">
+		<h1>Fyll i din beta</h1>
+		<form id="form" name="form" action="http://www.te.hik.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="POST">
+			<fieldset id="info">
+				<p id="firstname"><label for="firstname">Förnamn </label></p><p><input id="FN" name="firstName" type="text" /></p>
+				<p id="lastname"><label for="lastname">Efternamn </label></p><p><input id="LN" name="lastName" type="text" /></p>
+				<p id="zipcode"><label for="zipcode">Postnummer </label></p><p><input id="ZC" name="zipCode" type="text" /></p>
+				<p id="phonenr"><label for="phoneno">Telefon </label></p><p><input id="PN" name="phoneNr" type="text" /></p>
+				<p id="epost"><label for="email">E-post </label></p><p><input id="EP" name="ePost" type="text" /></p>
+			</fieldset>
+			<fieldset id="modell">
+			<p>Prismodell</p>
+				<select name="MODELL">
+					<option selected="selected" name="låg" value="LÅG">Låg</option>
+					<option name="medel" value="MEDEL">Medel</option>
+					<option name="hög" value="HÖG">Hög</option>
+				</select>
+			</fieldset>
+			<fieldset id="skicka">
+				<p id="skickaknapp"><input type="submit" id="submit" name="submit" value="Genomför köp" /></p>
+			</fieldset>
+    	  <script src="Validering.js"></script>
+    </body>
+</html>
