@@ -242,6 +242,35 @@ Validator.prototype.checkzipCode = function()
 		}
 }
 
+Validator.prototype.checkphoneNr = function()
+{
+		
+		var pattern = /^[0-9]+$/;
+		var phonenr = this.form.elements["phoneNr"].value;
+		var error = document.getElementById("phonenr");
+		var PNId = document.getElementById("PN");
+
+		if (phonenr.match(pattern))
+		{ 
+			if (error.className == "error")
+			{
+				var errSpan = document.getElementById("errorPN");
+				PNId.removeChild(errSpan);
+			}
+			error.className = "ok";
+		} 
+		else
+		{ 
+			if (error.className != "error") 
+			{
+				var id = "errorPN";
+				var span = this.createErrorMark(id);
+				PNId.appendChild(span);
+			}
+			error.className = "error";
+		}
+}
+
 }
 };
 	
