@@ -300,6 +300,24 @@ Validator.prototype.checkePost = function()
 		}
 };
 
+Validator.prototype.checkForm = function()
+{
+		var that = this;
+		var aTag = document.getElementById("tag");
+		if ((document.getElementById("firstname").className === "ok") && (document.getElementById("lastname").className === "ok") && (document.getElementById("zipcode").className === "ok") && (document.getElementById("phonenr").className === "ok") && (document.getElementById("epost").className === "ok"))
+		{
+			aTag.onclick = function(){
+				that.checkInfoWindow();
+			}	
+		}
+		else 
+		{
+			aTag.onclick = function(){
+				return;
+			}	
+		}
+}
+
 }
 };
 	
