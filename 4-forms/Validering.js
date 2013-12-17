@@ -213,6 +213,35 @@ Validator.prototype.checklastName = function()
 		}
 }
 
+Validator.prototype.checkzipCode = function()
+{
+		
+		var pattern = /^[0-9]{3}-[0-9]{2}$/;
+		var zipcode = this.form.elements["zipCode"].value;
+		var error = document.getElementById("zipcode");
+		var ZCId = document.getElementById("ZC");
+
+		if (zipcode.match(pattern))
+		{ 
+			if (error.className == "error") 
+			{
+				var errSpan = document.getElementById("errorZC");
+				ZCId.removeChild(errSpan);
+			}
+			error.className = "ok";
+		} 
+		else 
+		{ 
+			if (error.className != "error")
+			{
+				var id = "errorZC";
+				var span = this.createErrorMark(id);
+				ZCId.appendChild(span);
+			}
+			error.className = "error";
+		}
+}
+
 }
 };
 	
