@@ -184,6 +184,35 @@ Validator.prototype.checkfirstName = function()
 		}
 }
 
+Validator.prototype.checklastName = function()
+{
+		
+		var pattern = /^[a-zåäö]+(\s|\-|[a-zåäö])[a-zåäö]+$/i;
+		var lastname = this.form.elements["lastName"].value;
+		var error = document.getElementById("lastname");
+		var LNId = document.getElementById("LN");
+
+		if (lastname.match(pattern))
+		{ 
+			if (error.className == "error")
+			{
+				var errSpan = document.getElementById("errorLN");
+				LNId.removeChild(errSpan);
+			}
+			error.className = "ok";
+		} 
+		else 
+		{ 
+			if (error.className != "error")
+			{
+				var id = "errorLN";
+				var span = this.createErrorMark(id);
+				LNId.appendChild(span);
+			}
+			error.className = "error";
+		}
+}
+
 }
 };
 	
