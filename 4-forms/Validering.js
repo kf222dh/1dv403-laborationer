@@ -182,7 +182,7 @@ Validator.prototype.checkfirstName = function()
 			error.className = "error";
 			
 		}
-}
+};
 
 Validator.prototype.checklastName = function()
 {
@@ -211,7 +211,7 @@ Validator.prototype.checklastName = function()
 			}
 			error.className = "error";
 		}
-}
+};
 
 Validator.prototype.checkzipCode = function()
 {
@@ -240,7 +240,7 @@ Validator.prototype.checkzipCode = function()
 			}
 			error.className = "error";
 		}
-}
+};
 
 Validator.prototype.checkphoneNr = function()
 {
@@ -269,7 +269,36 @@ Validator.prototype.checkphoneNr = function()
 			}
 			error.className = "error";
 		}
-}
+};
+
+Validator.prototype.checkePost = function()
+{
+		
+		var pattern = /^[a-z0-9!#$%&'*+/=?^_'{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_'{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+		var epost = this.form.elements["ePost"].value;
+		var error = document.getElementById("epost");
+		var EPId = document.getElementById("EP");
+
+		if (epost.match(pattern))
+		{ 
+			if (error.className == "error")
+			{
+				var errSpan = document.getElementById("errorEP");
+				EPId.removeChild(errSpan);
+			}
+			error.className = "ok";
+		} 
+		else 
+		{ 
+			if (error.className != "error")
+			{
+				var id = "errorEP";
+				var span = this.createErrorMark(id);
+				EPId.appendChild(span);
+			}
+			error.className = "error";
+		}
+};
 
 }
 };
