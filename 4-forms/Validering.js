@@ -154,6 +154,36 @@ var Validering =
 		};
 };
 
+Validator.prototype.checkfirstName = function()
+{
+	
+		var pattern = /^[a-zåäö]+(\s|\-|\.|[a-zåäö])[a-zåäö]+([a-zåäö]|\.)$/i;
+		var firstname = this.form.elements["firstName"].value;
+		var error = document.getElementById("firstname");
+		var FNId = document.getElementById("FN");
+
+		if (firstname.match(pattern))
+		{ 
+			if (error.className == "error")
+			{
+				var errSpan = document.getElementById("errorFN");
+				FNId.removeChild(errSpan);
+			}
+			error.className = "ok";
+		} 
+		else
+		{ 
+			if (error.className != "error")
+			{
+				var id = "errorFN";
+				var span = this.createErrorMark(id);
+				FNId.appendChild(span);
+			}
+			error.className = "error";
+			
+		}
+}
+
 }
 };
 	
