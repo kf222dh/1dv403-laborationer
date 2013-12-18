@@ -206,7 +206,7 @@ Validator.prototype.checkLastName = function()
 Validator.prototype.checkZipCode = function()
 {
 		
-		var pattern = /^[0-9]{3}-[0-9]{2}$/;
+		var pattern = /^([SE]*)\s*(\d{3})[\s\-]*(\d\d)$/;
 		var zipcode = this.form.elements.ZipCode.value;
 		var error = document.getElementById("zipcode");
 		var zcId = document.getElementById("zc");
