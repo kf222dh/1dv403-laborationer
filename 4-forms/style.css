@@ -10,9 +10,9 @@ body
 #content 
 {
 	position: fixed;
-	left: 100px;
-	top: 100px;
-	width: 800px;
+	left: 600px;
+	top: 200px;
+	width: 500px;
 	margin: auto;
 	text-align: left;
 	background-color: #FFBB33;
@@ -125,8 +125,8 @@ select
 #placeholder
 {
 	position: fixed;
-	left: 150px;
-	top: 150px;
+	left: 625px;
+	top: 200px;
 	width: 400px;
 	margin: 0;
 	text-align: left;

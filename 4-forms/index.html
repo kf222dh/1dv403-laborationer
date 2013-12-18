@@ -1,34 +1,34 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="sv">
 <head>
-	<meta charset="UTF-8" />
- 	<title>Valideringen</title>
- 	<link href="style.css" rel="stylesheet" media="screen"  type="text/css" />
- 	<link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8" />
+    <title>Valideringen</title>
+    <link href="style.css" rel="stylesheet" media="screen"  type="text/css" />
+    <link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
     <body>
     <div id="content">
 		<h1>Fyll i din betalningsplan</h1>
 		<form id="form" name="form" action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="POST">
 			<fieldset id="info">
-				<p id="firstname"><label for="firstname">Förnamn </label></p><p><input id="FN" name="firstName" type="text" /></p>
-				<p id="lastname"><label for="lastname">Efternamn </label></p><p><input id="LN" name="lastName" type="text" /></p>
-				<p id="zipcode"><label for="zipcode">Postnummer </label></p><p><input id="ZC" name="zipCode" type="text" /></p>
-				<p id="phonenr"><label for="phonenr">Telefon </label></p><p><input id="PN" name="phoneNr" type="text" /></p>
-				<p id="epost"><label for="email">E-post </label></p><p><input id="EP" name="ePost" type="text" /></p>
+				<p id="fn"><label for="firstname">Förnamn: </label><input id="firstname" name="FirstName" type="text" /></p>
+				<p id="ln"><label for="lastname">Efternamn: </label><input id="lastname" name="LastName" type="text" /></p>
+				<p id="zc"><label for="zipcode">Postnummer: </label><input id="zipcode" name="ZipCode" type="text" /></p>
+				<p id="pn"><label for="phoneno">Telefon: </label><input id="phoneno" name="PhoneNo" type="text" /></p>
+				<p id="em"><label for="email">Email: </label><input id="email" name="Email" type="text" /></p>
 			</fieldset>
 			<fieldset id="modell">
-			<p>Prismodell</p>
-				<select name="MODELL">
-					<option selected="selected" name="låg" value="LÅG">Låg</option>
-					<option name="medel" value="MEDEL">Medel</option>
-					<option name="hög" value="HÖG">Hög</option>
+				<select name="Modell">
+					<option selected="selected" name="Låg" value="Låg">Låg</option>
+					<option name="Medel" value="Medel">Medel</option>
+					<option name="Hög" value="Hög">Hög</option>
 				</select>
 			</fieldset>
-			<fieldset id="send">
-				<p id="sendButton"><input type="submit" id="submit" name="submit" value="Genomför köp" /></p>
+			<fieldset id="skicka">
+				<p id="skickaknapp"><input type="submit" id="submit" name="submit" value="Skicka" /></p>
 			</fieldset>
-    </div>
-    	  <script type="text/javascript" src="js/Validering.js"></script>
-    </body>
+</div>
+	<script type="text/javascript" src="validatorStart.js"></script>
+	<script type="text/javascript" src="Validator.js"></script>
+</body>
 </html>
