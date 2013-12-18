@@ -84,7 +84,7 @@ Validator.prototype.start = function()
 			var zc = document.getElementById("zipcode");
 			var pos = that.findPos(zc);
 			var id = "zcToolTip";
-			var infotext = "Ange postnummer på formen XXX-XX.";
+			var infotext = "Ange postnummer på formen XXX-XX eller SE XXX-XX exempelvis.";
 			var div = that.createTooltip(id, pos, infotext);
 			tooltipPlaceholder.appendChild(div);
 		};
