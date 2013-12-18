@@ -434,6 +434,22 @@ Validator.prototype.findPos = function(obj)
 		return [curleft,curtop];
 };
 
+Validator.prototype.createTooltip = function(id, pos, infotext)
+{
+		var div = document.createElement("div");
+		div.id = id;
+		div.className = "tooltip";
+		div.style.position = "fixed";
+		div.style.top = pos[1]+"px";
+		div.style.left = pos[0]+"px";
+		var p = document.createElement("p");
+		p.className = "fix";
+		var infotext = document.createTextNode(infotext);
+		p.appendChild(infotext);
+		div.appendChild(p);
+		return div;
+};
+
 }
 };
 	
