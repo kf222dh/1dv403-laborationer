@@ -401,7 +401,7 @@ Validator.prototype.checkInfoWindow = function(){
 			document.body.removeChild(background);
 			var off = false;
 			that.enableDisableForm(off);
-		}
+		};
 		pButtons.appendChild(button);
 		
 		var sendForm = document.createElement("input");
@@ -415,9 +415,24 @@ Validator.prototype.checkInfoWindow = function(){
 			var off = false;
 			that.enableDisableForm(off);
 			document.forms["form"].submit();
-		}
+		};
 		pButtons.appendChild(sendForm);
-}
+};
+
+Validator.prototype.findPos = function(obj)
+{
+		var curleft = curtop = 0;
+		if (obj.offsetParent)
+		{
+			do 
+			{
+				curleft += obj.offsetLeft;
+				curtop += obj.offsetTop;
+			}
+			while (obj = obj.offsetParent);
+		}
+		return [curleft,curtop];
+};
 
 }
 };
