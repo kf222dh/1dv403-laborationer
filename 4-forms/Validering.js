@@ -333,6 +333,92 @@ Validator.prototype.changeSubmitButton = function()
 		send.appendChild(aTag);
 };
 
+Validator.prototype.checkInfoWindow = function(){
+	
+		var that = this;
+	
+		var on = true;
+		this.enableDisableForm(on);
+		
+		var background = document.createElement("div");
+		background.id = "background";
+		document.body.appendChild(background);
+		
+		var content = document.getElementById("content");
+	
+		var placeholder = document.createElement("div");
+		placeholder.id = "placeholder";
+		content.appendChild(placeholder);
+		
+		var infowindow = document.createElement("div");
+		infowindow.id = "infowindow";
+		placeholder.appendChild(infowindow);
+		
+		var header = document.createElement("h1");
+		var headerText = document.createTextNode("Kontrollera dina uppgifter:");
+		header.appendChild(headerText);
+		infowindow.appendChild(header);
+		
+		var pFN = document.createElement("p");
+		var textFN = document.createTextNode("Förnamn: "+this.form.elements["firstName"].value);
+		pFN.appendChild(textFN);
+		infowindow.appendChild(pFN);
+		
+		var pLN = document.createElement("p");
+		var textLN = document.createTextNode("Efternamn: "+this.form.elements["lastName"].value);
+		pLN.appendChild(textLN);
+		infowindow.appendChild(pLN);
+		
+		var pZC = document.createElement("p");
+		var textZC = document.createTextNode("Postnummer: "+this.form.elements["zipCode"].value);
+		pZC.appendChild(textZC);
+		infowindow.appendChild(pZC);
+		
+		var pPN = document.createElement("p");
+		var textPN = document.createTextNode("Telefon: "+this.form.elements["phoneNr"].value);
+		pPN.appendChild(textPN);
+		infowindow.appendChild(pPN);
+		
+		var pEP = document.createElement("p");
+		var textEP = document.createTextNode("E-post: "+this.form.elements["ePost"].value);
+		pEP.appendChild(textEP);
+		infowindow.appendChild(pEP);
+		
+		var pML = document.createElement("p");
+		var textML = document.createTextNode("Prismodell: "+this.form.elements["MODELL"].value);
+		pML.appendChild(textML);
+		infowindow.appendChild(pML);
+		
+		var pButtons = document.createElement("p");
+		infowindow.appendChild(pButtons);
+		
+		var button = document.createElement("input");
+		button.type = "button";
+		button.value = "Ändra uppgifter";
+		button.onclick = function()
+		{
+			placeholder.removeChild(infowindow);
+			document.body.removeChild(background);
+			var off = false;
+			that.enableDisableForm(off);
+		}
+		pButtons.appendChild(button);
+		
+		var sendForm = document.createElement("input");
+		sendForm.type = "submit";
+		sendForm.name = "submit";
+		sendForm.value = "Gå vidare";
+		sendForm.onclick = function()
+		{
+			placeholder.removeChild(infowindow);
+			document.body.removeChild(background);
+			var off = false;
+			that.enableDisableForm(off);
+			document.forms["form"].submit();
+		}
+		pButtons.appendChild(sendForm);
+}
+
 }
 };
 	
