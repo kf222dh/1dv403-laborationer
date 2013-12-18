@@ -306,17 +306,32 @@ Validator.prototype.checkForm = function()
 		var aTag = document.getElementById("tag");
 		if ((document.getElementById("firstname").className === "ok") && (document.getElementById("lastname").className === "ok") && (document.getElementById("zipcode").className === "ok") && (document.getElementById("phonenr").className === "ok") && (document.getElementById("epost").className === "ok"))
 		{
-			aTag.onclick = function(){
+			aTag.onclick = function()
+			{
 				that.checkInfoWindow();
-			}	
+			};	
 		}
 		else 
 		{
-			aTag.onclick = function(){
+			aTag.onclick = function()
+			{
 				return;
-			}	
+			};	
 		}
-}
+};
+
+Validator.prototype.changeSubmitButton = function()
+{
+		var send = document.getElementById("sendButton");
+		var submit = document.getElementById("submit");
+		send.removeChild(submit);
+		var aTag = document.createElement("a");
+		aTag.href = "#";
+		aTag.id = "tag";
+		var text = document.createTextNode("Skicka uppgifter");
+		aTag.appendChild(text);
+		send.appendChild(aTag);
+};
 
 }
 };
