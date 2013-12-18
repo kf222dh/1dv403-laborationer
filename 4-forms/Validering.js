@@ -450,6 +450,17 @@ Validator.prototype.createTooltip = function(id, pos, infotext)
 		return div;
 };
 
+
+Validator.prototype.enableDisableForm = function(onoff)
+{
+		this.form.elements["firstName"].disabled = onoff;
+		this.form.elements["lastName"].disabled = onoff;
+		this.form.elements["zipCode"].disabled = onoff;
+		this.form.elements["phoneNr"].disabled = onoff;
+		this.form.elements["ePost"].disabled = onoff;
+		this.form.elements["MODELL"].disabled = onoff;
+};
+
 }
 };
 	
