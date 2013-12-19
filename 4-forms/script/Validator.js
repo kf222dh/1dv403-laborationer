@@ -147,7 +147,6 @@ Validator.prototype.start = function()
 
 Validator.prototype.checkFirstName = function()
 {
-	
 		var pattern = /^[a-zåäö]+(\s|\-|\.|[a-zåäö])[a-zåäö]+([a-zåäö]|\.)$/i;
 		var firstname = this.form.elements.FirstName.value;
 		var error = document.getElementById("firstname");
