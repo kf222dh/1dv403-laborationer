@@ -216,8 +216,6 @@ Validator.prototype.checkZipCode = function()
 		 
 			if (error.className == "error") 
 			{
-			    //zipcode = zipcode.replace(pattern, /(SE|\ |-)/g, "");
-			    //zipcode = zipcode.replace(pattern, '$2$4')
 			    Validator.ZipCode = zipcode;
 				var errSpan = document.getElementById("errorZC");
 				zcId.removeChild(errSpan);
@@ -409,9 +407,6 @@ Validator.prototype.checkInfoWindow = function()
 		sendForm.type = "submit";
 		sendForm.name = "submit";
 		sendForm.value = "Gå vidare";
-	
-	
-		var that = this;
 	
 		sendForm.onclick = function()
 		{
