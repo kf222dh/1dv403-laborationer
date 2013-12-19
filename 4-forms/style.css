@@ -130,7 +130,7 @@ select
 	width: 400px;
 	margin: 0;
 	text-align: left;
-	z-index: 2;
+	z-index: 2000000;
 }
 
 #infowindow

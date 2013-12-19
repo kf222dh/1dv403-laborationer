@@ -213,11 +213,17 @@ Validator.prototype.checkZipCode = function()
 
 		if (zipcode.match(pattern))
 		{ 
+		 
 			if (error.className == "error") 
 			{
+			    //zipcode = zipcode.replace(pattern, /(SE|\ |-)/g, "");
+			    //zipcode = zipcode.replace(pattern, '$2$4')
+			    Validator.ZipCode = zipcode;
 				var errSpan = document.getElementById("errorZC");
 				zcId.removeChild(errSpan);
 			}
+			zipcode = zipcode.replace(/^(SE)? ?(\d\d\d)( |\-)?(\d\d)$/, '$2$4');
+			Validator.ZipCode = zipcode;
 			error.className = "ok";
 		} 
 		else
@@ -227,6 +233,7 @@ Validator.prototype.checkZipCode = function()
 				var id = "errorZC";
 				var span = this.createErrorMark(id);
 				zcId.appendChild(span);
+				
 			}
 			error.className = "error";
 		}
@@ -361,7 +368,7 @@ Validator.prototype.checkInfoWindow = function()
 		infowindow.appendChild(pLN);
 		
 		var pZC = document.createElement("p");
-		var textZC = document.createTextNode("Postnummer: "+this.form.elements.ZipCode.value);
+		var textZC = document.createTextNode("Postnummer: "+Validator.ZipCode);
 		pZC.appendChild(textZC);
 		infowindow.appendChild(pZC);
 		
@@ -386,6 +393,9 @@ Validator.prototype.checkInfoWindow = function()
 		var button = document.createElement("input");
 		button.type = "button";
 		button.value = "Ändra uppgifter";
+		
+		
+		
 		button.onclick = function()
 		{
 			placeholder.removeChild(infowindow);
@@ -399,8 +409,13 @@ Validator.prototype.checkInfoWindow = function()
 		sendForm.type = "submit";
 		sendForm.name = "submit";
 		sendForm.value = "Gå vidare";
+	
+	
+		var that = this;
+	
 		sendForm.onclick = function()
 		{
+		    that.form.elements.ZipCode.value = Validator.ZipCode;
 			placeholder.removeChild(infowindow);
 			document.body.removeChild(background);
 			var off = false;
