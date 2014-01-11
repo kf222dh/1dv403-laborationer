@@ -1,0 +1,27 @@
+body
+{
+    background-image:url('pics/desktop.jpg');
+}
+
+#main 
+{
+    margin:0 auto;
+    display:block;
+    width:1280px;
+    height:800px;
+}
+
+#desktop 
+{
+    height:92%;
+    width:1280px;
+    background-image:url('pics/innerdesktop.jpg');
+    clear:both;
+}
+
+#menuBar 
+{
+    display:block;
+    padding:6px;
+    background-image:url('pics/menubackground.jpg');
+}
