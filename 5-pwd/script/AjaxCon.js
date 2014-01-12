@@ -8,9 +8,10 @@ function AjaxCon(url, callback)
         var READY_STATE_SENT = 2;
         var READY_STATE_LOADING = 3;
         var READY_STATE_COMPLETE = 4;
-        //Ropar på XMLHttpRequest funktionen som skapar ett nytt "ajaxobjekt"
         var xhr = new XMLHttpRequest();
 
+        //onreadystatechange == vad som ska hända när vi får svar från funktionen
+        //finns 4 olika koder. 4an betyder att allt är färdigt och "OK"
         xhr.onreadystatechange = function()
         {
                 
@@ -18,11 +19,11 @@ function AjaxCon(url, callback)
                 {
                         if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304)
                         {
-                            //Ropar på callback funktionen, skickar xhr objektets svarstext
                                 callback(xhr.responseText);                                
                         }
                         else
                         {
+                                //Else satsen skriver ut vad som inte gick rätt (allt utom 4)
                                 console.log("Läsfel"+xhr.status);        
                         }
                 }
