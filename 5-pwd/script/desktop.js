@@ -32,7 +32,7 @@ var desktop =
 
                 //Div för text
                 var text = document.createTextNode("Image viewer");
-                head.appendChild(text)
+                head.appendChild(text);
 
                 //Div för content
                 var content = document.createElement("div");
@@ -66,8 +66,8 @@ var desktop =
                 var div = document.getElementById("desktop");
                 div.removeChild(window);
                 count -= 1;
-            }
-        }
+            };
+        };
     },
 
     //Laddar bilderna
@@ -138,7 +138,7 @@ var desktop =
             e.preventDefault();
             var desk = document.getElementById("desktop");
             desk.style.backgroundImage = "url('"+info+"')";
-        }
+        };
     }
-}
+};
 window.onload = desktop.init;
