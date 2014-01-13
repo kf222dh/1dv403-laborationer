@@ -2,15 +2,16 @@
 //Objekt
 var desktop = 
 {
-
+    //Metod som initierar desktop
     init: function () 
     {
         var a = document.getElementById("menuIcon");
-        var count = 0;  //Kollar om den är öppen eller stängd
+        var count = 0;  //Räknar antal tryck på ikonen för att öppna ny fönster
 
         //Desktopknappens klickfunktion
         a.onclick = function (e) 
         {
+            //DOM strukturen
             e.preventDefault();
             if (count === 0) 
             {
@@ -30,8 +31,9 @@ var desktop =
                 camera.src = "pics/camera.png";
                 head.appendChild(camera);
 
-                //Div för text
+                //Skapar en text
                 var text = document.createTextNode("Image viewer");
+                //Lägg texten inuti head div taggen
                 head.appendChild(text);
 
                 //Div för content
@@ -57,15 +59,17 @@ var desktop =
                 //Visar bilderna i fönstret
                 desktop.showImages();
 
-                count += 1;
+                count ++;
             }
             //Bildfönstrets klickfunktion
             open.onclick = function (e) 
             {
                 e.preventDefault();
                 var div = document.getElementById("desktop");
+                //Då användaren klickar på stängknappen ska fönstret stängas
                 div.removeChild(window);
-                count -= 1;
+                //Lägger counter med 0 igen för att kunna öppna ny fönster igen efter att man stängt den
+                count --;
             };
         };
     },
