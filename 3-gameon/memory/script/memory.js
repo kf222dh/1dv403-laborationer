@@ -2,41 +2,42 @@
 
 {
     "use strict";
-
+    //Funktion som generar rader och kolummer samt id
     function MemoryBoard(memoryID, rows, cols)
     {
-
+        //Sparar random arrayen från random.js
         this.randomArray = [];
 
         this.init = function ()
         {
             var i = 0;
             var x = 0;
-            var countPic = 0;
+            var countPic = 0;// Variabel som räknar.
             var picUp = 0;
-            var countGuesses = 0;
-            var duoFounded = 0;
+            var countGuesses = 0;//För att uppmärksamma användaren om hur många försök som hon / han behövde
+            var duoFounded = 0;//Räknar rätt par
             var This = this;
             var lastAlternativ = null;
+            //Huvudlayout element
             var againButton = document.createElement("button");
             var p = document.createElement("p");
-            var pressDiv = document.createElement("div");
-            var table = document.createElement("table");
+            var pressDiv = document.createElement("div");//Skapar div-tagg och lägger dem i HTML-dokumentet
+            var table = document.createElement("table");//Skapar en tabell och lägger den i HTML-dokumentet
             var div = document.getElementById(memoryID);
             var clickEvent;
             var img;
             var anchor;
             var tr;
             var td;
-
+            //Generar arrayen som spelplanen bygger på
             this.randomArray = RandomGenerator.getPictureArray(rows, cols);
-            
+            //Skapar div för information
             pressDiv.setAttribute("id", memoryID + "info");
             
             pressDiv.setAttribute("class", "Boardinfo");
             
             pressDiv.appendChild(p);
-
+            //Skapar starta igen knapp
             againButton.setAttribute("type", "button");
             
             againButton.innerHTML = "Nytt försök";
@@ -57,12 +58,12 @@
                 This.init();
                 
             };
-            
+            //Kollar ifall man klickar på något kort
             clickEvent = function (e)
             {
                 var currentChoice = e.currentTarget.getAttribute("id");
                 
-                e.preventDefault();
+                e.preventDefault();//Förhindrar standardåtgärden webbläsaren gör på den händelsen
 
                 if (lastAlternativ === currentChoice)
                 {
@@ -102,7 +103,7 @@
                             countGuesses += 1;
                             
                             duoFounded += 1;
-                            
+                            //Skriver ut antal försök som gjorts
                             This.writeInfo("Antal par kvar att hitta: " + (This.randomArray.length / 2 - duoFounded) + "<br />Antal gjorda gissningar: " + countGuesses);
                         }
                         
@@ -121,14 +122,14 @@
                                 lastAlternativ = null;
                                 
                                 countGuesses += 1;
-                                
+                                //Br-tagg läggs till för radbrytning
                                 This.writeInfo("Antal par kvar att hitta: " + (This.randomArray.length / 2 - duoFounded) + "<br />Antal gjorda gissningar: " + countGuesses);
                                 
                             }, 
                             1000);
                         }
                     }
-                    
+                    //Kollar ifall alla kort är uppvända och spelet över
                     if (duoFounded >= This.randomArray.length / 2)
                     {
                         
@@ -142,7 +143,7 @@
                 }
 
             };
-
+            //Skapar och skriver ut spelplanen för presentation
             for (i = 1; i <= rows; i += 1) 
             {
                 
@@ -150,9 +151,9 @@
                 
                 for (x = 1; x <= cols; x += 1)
                 {
-                    
+                    //Skapar bilderna
                     img = document.createElement("img");
-                    
+                    //För att bilderna ska synas från början
                     img.setAttribute("src", "pics/0.png");
                     
                     anchor = document.createElement("a");
@@ -160,7 +161,7 @@
                     anchor.setAttribute("class", (this.randomArray[countPic] + " Klickbar") );
                     
                     anchor.setAttribute("id", countPic + memoryID);
-                    
+                    //a.href används för att kunna tabba och använda enter på bilderna. Blir länkar
                     anchor.setAttribute("href", "#");
                     
                     td = document.createElement("td");
@@ -171,7 +172,7 @@
                     
                     tr.appendChild(td);
 
-                    countPic += 1;
+                    countPic += 1;//Räknar upp
                     
                     anchor.onclick = clickEvent;
                     
@@ -221,7 +222,7 @@
             return (src1 === src2);
             
         };
-
+        //Variabel som är en img-tagg med hänvisning till en viss bild
         this.turnDown = function (nodeId)
         {
             
@@ -230,7 +231,7 @@
             node.firstChild.setAttribute("src", "pics/0.png");
             
         };
-        
+        //Variabel som innehåller bild på ovansidan kortet.
         this.turnUp = function (nodeId)
         
         {
@@ -242,8 +243,9 @@
             
         };
     }
-    
+    //Kör detta allra först när sidan laddas
     new MemoryBoard("Board", 4, 4).init();
-    
+    //Kolumner 4x4 bilder
+    //Antal rader 4x4 bilder
 }
 ());

@@ -1,6 +1,6 @@
 function Validator()
 {
-	
+	    //Hämtar formulär och dess underliggande element i html-dokumentet
 		this.form = document.getElementById("form");
 		
 		this.firstName = this.form.elements.FirstName;
@@ -12,7 +12,7 @@ function Validator()
 		this.phoneNo = this.form.elements.PhoneNo;
 		
 		this.email = this.form.elements.Email;
-		
+		//Skapar ett felmeddelande för given nod
 		this.createErrorMark = function(id)
 		{
 			var errorSpan = document.createElement("span");
@@ -33,7 +33,7 @@ Validator.prototype.start = function()
 		content.appendChild(tooltipPlaceholder);
 	
 		this.changeSubmitButton();
-		
+		//Kontrollerar att input stämmer
 		this.firstName.onchange = function()
 		{
 			that.fn = that.checkFirstName();
@@ -58,7 +58,7 @@ Validator.prototype.start = function()
 		{
 			that.em = that.checkEmail();
 		};
-		
+		//Skapar tooltip
 		this.firstName.onfocus = function()
 		{
 			var fn = document.getElementById("firstname");
@@ -108,7 +108,7 @@ Validator.prototype.start = function()
 			var div = that.createTooltip(id, pos, infotext);
 			tooltipPlaceholder.appendChild(div);
 		};
-		
+		//Ta bort tooltip
 		this.firstName.onblur = function()
 		{
 			var div = document.getElementById("fnToolTip");
@@ -144,10 +144,10 @@ Validator.prototype.start = function()
 			that.checkForm();
 		};
 };
-
+//Funktioner för olika valideringar
 Validator.prototype.checkFirstName = function()
 {
-		var pattern = /^[a-zåäö]+(\s|\-|\.|[a-zåäö])[a-zåäö]+([a-zåäö]|\.)$/i;
+		var pattern = /^[a-zåäö]+(\s|\-|\.|[a-zåäö])[a-zåäö]+([a-zåäö]|\.)$/i;//Reguljära uttryck, som validerar
 		var firstname = this.form.elements.FirstName.value;
 		var error = document.getElementById("firstname");
 		var fnId = document.getElementById("fn");
@@ -175,7 +175,7 @@ Validator.prototype.checkFirstName = function()
 
 Validator.prototype.checkLastName = function()
 {
-		
+		//Reguljära uttryck, som validerar
 		var pattern = /^[a-zåäö]+(\s|\-|[a-zåäö])[a-zåäö]+$/i;
 		var lastname = this.form.elements.LastName.value;
 		var error = document.getElementById("lastname");
@@ -204,7 +204,7 @@ Validator.prototype.checkLastName = function()
 
 Validator.prototype.checkZipCode = function()
 {
-		
+		//Reguljära uttryck, som validerar
 		var pattern = /^([SE]*)\s*(\d{3})[\s\-]*(\d\d)$/;
 		var zipcode = this.form.elements.ZipCode.value;
 		var error = document.getElementById("zipcode");
@@ -238,7 +238,7 @@ Validator.prototype.checkZipCode = function()
 
 Validator.prototype.checkPhoneNo = function()
 {
-		
+		//Reguljära uttryck, som validerar
 		var pattern = /^[0-9]+$/;
 		var phoneno = this.form.elements.PhoneNo.value;
 		var error = document.getElementById("phoneno");
@@ -267,7 +267,7 @@ Validator.prototype.checkPhoneNo = function()
 
 Validator.prototype.checkEmail = function()
 {
-		
+		//Reguljära uttryck, som validerar
 		var pattern = /^[a-z0-9!#$%&'*+/=?^_'{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_'{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 		var email = this.form.elements.Email.value;
 		var error = document.getElementById("email");
@@ -293,7 +293,7 @@ Validator.prototype.checkEmail = function()
 			error.className = "error";
 		}
 };
-
+//Validering av hela formuläret, och trigger av popuprutan, och validering går igenom
 Validator.prototype.checkForm = function()
 {
 		var that = this;
@@ -326,7 +326,7 @@ Validator.prototype.changeSubmitButton = function()
 		aTag.appendChild(text);
 		skicka.appendChild(aTag);
 };
-
+//Utskrift i popup-rutan
 Validator.prototype.checkInfoWindow = function()
 {
 	
@@ -351,9 +351,9 @@ Validator.prototype.checkInfoWindow = function()
 		
 		var header = document.createElement("h1");
 		var headerText = document.createTextNode("Kontrollera dina uppgifter:");
-		header.appendChild(headerText);
+		header.appendChild(headerText);//Textnoderna placeras i DOM
 		infowindow.appendChild(header);
-		
+		//Skapar p tagg för att visa meddelande där det står all info användaren har skrivit in
 		var pFN = document.createElement("p");
 		var textFN = document.createTextNode("Förnamn: "+this.form.elements.FirstName.value);
 		pFN.appendChild(textFN);
@@ -392,7 +392,7 @@ Validator.prototype.checkInfoWindow = function()
 		button.value = "Ändra uppgifter";
 		
 		
-		
+		//Formulär knappen
 		button.onclick = function()
 		{
 			placeholder.removeChild(infowindow);
@@ -401,12 +401,12 @@ Validator.prototype.checkInfoWindow = function()
 			that.enableDisableForm(off);
 		};
 		pButtons.appendChild(button);
-		
+		//Skapar submit knapp
 		var sendForm = document.createElement("input");
 		sendForm.type = "submit";
 		sendForm.name = "submit";
 		sendForm.value = "Gå vidare";
-	
+	    //Event-hanterare för bekräfelse-knapp
 		sendForm.onclick = function()
 		{
 		    that.form.elements.ZipCode.value = Validator.ZipCode;
@@ -449,7 +449,7 @@ Validator.prototype.createTooltip = function(id, pos, infotext)
 		div.appendChild(p);
 		return div;
 };
-
+//Funktion för bekräftelse-popuprutan
 Validator.prototype.enableDisableForm = function(onoff)
 {
 		this.form.elements.FirstName.disabled = onoff;

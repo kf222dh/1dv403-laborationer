@@ -90,13 +90,13 @@ input:focus
 	border: solid 1px #000;
 }
 
-input.error
+input.error/*Gör rutan röd om det är error*/
 {
 	border: solid 2px #FF7474;
 	background: #feecec;
 }
 
-input.ok
+input.ok/*Gör rutan grön om det är error*/
 {
 	border: solid 2px #349101;
 	background: #d6eec9;
