@@ -7,17 +7,22 @@ window.onload = function(){
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren.
+	//Tom sträng	
 	var x = '';
+	//Om strängen är tom så skrivs detta meddelande ut
 	if (str === "")
 	{
         return ["Skriv något"]
     }
         else {
+            //For-loop som kollar igenom det som skrivits in, tittar efter de bestämda tecknen och byter om versaler samt gemener
             for (var i = 0; i < str.length; i++)
             {
                 var y = str.charAt(i);
+                //Ändras om och läggs in i den tomma strängen
                 x += (y == 'a' || y == 'A' ? '#' : y == y.toLocaleUpperCase()?y.toLocaleLowerCase():y.toLocaleUpperCase());
             }
+            //Skickar tillbaka den ändrade strängen.
             return x;
         }
 	};

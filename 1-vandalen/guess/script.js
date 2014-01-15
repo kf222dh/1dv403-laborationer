@@ -12,8 +12,9 @@ window.onload = function(){
 		console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 			
 		// Plats för förändring.
-		count++;
+		count++;//Räknare
 		
+		//Om det inte är ett nummer
 		if (isNaN(number))
 		{
 		    return [false, "Skriv in ett nummer som är mellan 1-100"];

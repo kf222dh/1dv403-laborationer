@@ -6,15 +6,19 @@ window.onload = function(){
 	var birthday = function(date)
 	{
 	// Din kod här.
+	//Skapar ett Date-objekt
     var now = new Date();
+    //Kollar om det man skriver in är i rätt format med regexp
     var input = new Date(date.replace(/(\d{4})\.(\d{2})\.(\d{2})/, '$3-$2-$1'));
     input.setFullYear(now.getFullYear());
     
+    //Om det är inte ett nummer så kastas det ett undantag
     if(isNaN(input))
     {
     throw new Error("Ange i formatet YYYY-MM-DD");
     }
     
+    //Om datumet redan passerat då läggs det på 1 på det nuvarande året. Det gör så att det skrivs ut heltal istället för negativa tal
     if(input.getTime() < now.getTime())
     {
         input.setFullYear(now.getFullYear() + 1);
@@ -26,7 +30,7 @@ window.onload = function(){
     }
     else
     {
-    return Math.round((input.getTime() - now.getTime())/(1000*60*60*24));
+    return Math.round((input.getTime() - now.getTime())/(1000*60*60*24));//Gör om det till dagar
     } 
     };
 	// ------------------------------------------------------------------------------

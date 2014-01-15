@@ -20,7 +20,7 @@ var messageApp =
 		area.onkeypress = function(e)
 		{
 			e = e || event;
-			if (e.keyCode === 13 && e.shiftKey)
+			if (e.keyCode === 13/*Enter-knappen*/ && e.shiftKey)
 			{
 				return "<br />";
 			}

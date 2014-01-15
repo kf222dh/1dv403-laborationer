@@ -4,7 +4,7 @@ var MessageBoard =
 {
     //Arrayen som kommer att innehålla alla meddelanden.
 	messages: [],
-	
+	//Startar applikationen
 	init: function(e)
 	{
 	    // Skapar ett nytt meddelandeobjekt
@@ -17,7 +17,7 @@ var MessageBoard =
     createMessage: function(messageID)
     {
 		var listMessage  = document.getElementById("listMessage");
-		
+		//Skapar div class = "meddelanden"
 		var meddelanden = document.createElement("div");
 		
 		meddelanden.className = "meddelande";
@@ -29,7 +29,7 @@ var MessageBoard =
 		p.innerHTML = this.messages[messageID].getHTMLText();
 		
 		meddelanden.appendChild(p);
-		
+		//Skapar div class = "ikoner"
 		var ikoner = document.createElement("div");
 
 		ikoner.className = "ikoner";
@@ -37,7 +37,7 @@ var MessageBoard =
 		meddelanden.insertBefore(ikoner, meddelanden.firstChild);
 		
 		var icons = document.createElement("p");
-		
+		//Skapar Tidstämpel-bild
 		var aTagg2 = document.createElement("a");
 
 		aTagg2.href = "#";
@@ -58,7 +58,7 @@ var MessageBoard =
 		aTagg2.appendChild(imgKlock);
 
 		icons.appendChild(aTagg2);
-				
+		//Skapar Ta bort-bild		
 		var aTagg = document.createElement("a");
 
 		aTagg.href = "#";
@@ -73,19 +73,19 @@ var MessageBoard =
 		{
 			MessageBoard.removeMessage(messageID);
 		}
-		
+		// Lägger till de nya elementen i den nya divtaggen
 		aTagg.appendChild(imgDel);
 
 		icons.appendChild(aTagg);
 
 		ikoner.appendChild(icons);
 	},
-	
+	//Renderar alla meddelanden
 	renderMessages: function()
 	{
-		
+	//Ta bort alla meddelanden	
 	document.getElementById("listMessage").innerHTML = "";
-		
+	//Visa alla meddelanden
 	for (var i = 0; i < this.messages.length; ++i)
 	{
 		this.createMessage(i);
@@ -95,11 +95,11 @@ var MessageBoard =
 	
 	removeMessage: function(messageID)
     {	
-	var conf = window.confirm("Säker på att du vill radera meddelandet?");
+	var conf = window.confirm("Säker på att du vill radera meddelandet?");//Frågar om man verkligen vill radera meddelandet
 	
 	if (conf)
 	{
-	    this.messages.splice(messageID, 1);
+	    this.messages.splice(messageID, 1);//Tar bort ett meddelande med unikt ID
 	}
 	
 	else {}
