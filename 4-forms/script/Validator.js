@@ -419,7 +419,7 @@ Validator.prototype.checkInfoWindow = function()
 		pButtons.appendChild(sendForm);
 		
 };
-
+//http://www.quirksmode.org/js/findpos.html
 Validator.prototype.findPos = function(obj)
 {
 		var curleft = curtop = 0;
